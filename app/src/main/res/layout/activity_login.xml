@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.LoginActivity"
+    android:background="?attr/bg">
+
+    <!--  top bar  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp">
+
+        <TextView
+            android:id="@+id/topbartitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:fontFamily="@font/product_sans_bold"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="?attr/boldText"
+            android:text="@string/account_sign_in"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--  iv pic  -->
+    <ImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/topbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="22dp"
+        android:contentDescription="@string/iv_profile"
+        android:src="@drawable/logo"/>
+
+    <TextView
+        android:id="@+id/lognote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ivProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/product_sans_medium"
+        android:textSize="14sp"
+        android:textColor="?attr/boldText"
+        android:textAlignment="center"
+        android:text="@string/please_login_to_your_account"/>
+
+<!--  username  -->
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lognote"
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/product_sans_medium"
+        android:textSize="18sp"
+        android:textColor="?attr/boldText"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        android:text="@string/username"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etusername"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/username"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/card_lang_inactive"
+        android:text=""
+        android:hint="@string/enter_your_username"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:textColor="?attr/boldText"
+        android:inputType="text"/>
+
+<!--  password  -->
+    <TextView
+        android:id="@+id/pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etusername"
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/product_sans_medium"
+        android:textSize="18sp"
+        android:textColor="?attr/boldText"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        android:text="@string/password"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etPass"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/pass"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/toggle"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/card_lang_inactive"
+        android:text=""
+        android:hint="@string/enter_your_password"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:textColor="?attr/boldText"
+        android:inputType="textPassword"/>
+
+<!--  Toggle  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/etPass"
+        app:layout_constraintBottom_toBottomOf="@id/etPass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/etPass"
+        android:layout_marginEnd="16dp">
+
+        <ImageView
+            android:id="@+id/visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/baseline_visibility_24"
+            android:visibility="visible"
+            android:contentDescription="@string/visible"/>
+
+        <ImageView
+            android:id="@+id/invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/baseline_visibility_off_24"
+            android:visibility="invisible"
+            android:contentDescription="@string/invisible"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+<!--  forgot pass  -->
+    <TextView
+        android:id="@+id/forgotPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etPass"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/product_sans_regular"
+        android:textStyle="normal"
+        android:textSize="12sp"
+        android:textColor="?attr/boldText"
+        android:text="@string/forgot_password"/>
+
+
+
+<!--  btn login  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnlog"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/etPass"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/card_button">
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="@font/product_sans_medium"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:text="@string/login"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--  register  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnlog"
+        app:layout_constraintStart_toStartOf="@id/btnlog"
+        app:layout_constraintEnd_toEndOf="@id/btnlog">
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/product_sans_medium"
+            android:textStyle="normal"
+            android:textColor="?attr/boldText"
+            android:textSize="12sp"
+            android:text="@string/dont_have_an_account"/>
+
+        <TextView
+            android:id="@+id/regHere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/note"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:textSize="12sp"
+            android:textColor="@color/Link"
+            android:textStyle="bold"
+            android:text="@string/reg_here"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="?android:progressBarStyle"
+        android:indeterminate="true"
+        app:indicatorSize="60dp"
+        app:trackThickness="10dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,7 @@
 package com.bangkit.allergysense.utils.repositories
 
-sealed class Source<out R> private constructor() {
-    data class Success<out T> (val data: T): Source<T>()
-    data class Error(val message: String): Source<Nothing>()
-    object Loading: Source<Nothing>()
+sealed class Response<out R> private constructor() {
+    data class Success<out T> (val data: T): Response<T>()
+    data class Error(val message: String): Response<Nothing>()
+    object Loading: Response<Nothing>()
 }

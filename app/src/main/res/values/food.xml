@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="food">
+        <item>Almond</item>
+        <item>Apple</item>
+        <item>Apricot</item>
+        <item>Artichoke</item>
+        <item>Asparagus</item>
+        <item>Avocado</item>
+        <item>Bamboo shoot</item>
+        <item>Banana</item>
+        <item>Barley</item>
+        <item>Bean</item>
+        <item>Blackberry</item>
+        <item>Black-eyed bean</item>
+        <item>Blueberry</item>
+        <item>Bonito</item>
+        <item>Broad bean</item>
+        <item>Broccoli</item>
+        <item>Brussels sprouts</item>
+        <item>Buckwheat</item>
+        <item>Burdock</item>
+        <item>Butter</item>
+        <item>Butter bean</item>
+        <item>Buttermilk</item>
+        <item>Button mushroom</item>
+        <item>Cabbage</item>
+        <item>Carrot</item>
+        <item>Casein</item>
+        <item>Cattle</item>
+        <item>Cauliflower</item>
+        <item>Celery</item>
+        <item>Cheese</item>
+        <item>Cherry</item>
+        <item>Chestnut</item>
+        <item>Chicken</item>
+        <item>Chicory</item>
+        <item>Chinese cabbage</item>
+        <item>Coffee bean</item>
+        <item>Corn</item>
+        <item>Cotton seed</item>
+        <item>Cranberry</item>
+        <item>Cream</item>
+        <item>Crustaceans</item>
+        <item>Custard</item>
+        <item>Date</item>
+        <item>Deer</item>
+        <item>Duck</item>
+        <item>Eel</item>
+        <item>Eggplant</item>
+        <item>Eggs</item>
+        <item>Endive</item>
+        <item>Fructose</item>
+        <item>Garlic</item>
+        <item>Ginger</item>
+        <item>Ginkgo nut</item>
+        <item>Globfish</item>
+        <item>Glucose</item>
+        <item>Goat</item>
+        <item>Grape</item>
+        <item>Grapefruit</item>
+        <item>Green soybean</item>
+        <item>Guava</item>
+        <item>Honey</item>
+        <item>Hop</item>
+        <item>Horse</item>
+        <item>Horse Mackerel</item>
+        <item>Horseradish</item>
+        <item>Huckleberry</item>
+        <item>Ice cream</item>
+        <item>Japanese pear</item>
+        <item>Japanese plum</item>
+        <item>Kale</item>
+        <item>Kidney bean</item>
+        <item>Kiwi</item>
+        <item>Konjac</item>
+        <item>Kyona</item>
+        <item>Lactose</item>
+        <item>Leek</item>
+        <item>Lemon</item>
+        <item>Lentil</item>
+        <item>Lettuce</item>
+        <item>Lima bean</item>
+        <item>Lime</item>
+        <item>Loquat</item>
+        <item>Mackerel</item>
+        <item>Mango</item>
+        <item>Milk</item>
+        <item>Mineral water</item>
+        <item>Mitsuba</item>
+        <item>Mume plum</item>
+        <item>Mustard Spinach</item>
+        <item>Nectarine</item>
+        <item>Nira</item>
+        <item>Okra</item>
+        <item>Onion</item>
+        <item>Orange</item>
+        <item>Orange pulp</item>
+        <item>Papaya</item>
+        <item>Parsley</item>
+        <item>Parsnip</item>
+        <item>Passion fruit</item>
+        <item>Peach</item>
+        <item>Peanut</item>
+        <item>Pear</item>
+        <item>Peas</item>
+        <item>Peas</item>
+        <item>Pecan</item>
+        <item>Pegia</item>
+        <item>Peppermint</item>
+        <item>Percifomes</item>
+        <item>Pig</item>
+        <item>Pineapple</item>
+        <item>Popcorn</item>
+        <item>Potato</item>
+        <item>Prune</item>
+        <item>Qing-geng-cai</item>
+        <item>Quince</item>
+        <item>Radish root</item>
+        <item>Rapeseed</item>
+        <item>Raspberry</item>
+        <item>Rice</item>
+        <item>Royal Jelly</item>
+        <item>Rye</item>
+        <item>Safflower seed</item>
+        <item>Salmon</item>
+        <item>Salsify</item>
+        <item>Sansho</item>
+        <item>Sea Bass</item>
+        <item>Sea Bream</item>
+        <item>Sesame seed</item>
+        <item>Shallot</item>
+        <item>Sheep</item>
+        <item>Shelled mollusc</item>
+        <item>Shiitake mushroom</item>
+        <item>Shungiku</item>
+        <item>Sour cream</item>
+        <item>Soybean</item>
+        <item>Spearmint</item>
+        <item>Spinach</item>
+        <item>Strawberry</item>
+        <item>Sugar</item>
+        <item>Sugar beet</item>
+        <item>Sugarcane</item>
+        <item>Sultani</item>
+        <item>Sultapya</item>
+        <item>Sunflower seed</item>
+        <item>Sweet corn</item>
+        <item>Sweet Pepper</item>
+        <item>Sweet potato</item>
+        <item>Taro</item>
+        <item>Tea</item>
+        <item>Tetraodontiformes</item>
+        <item>Tomato</item>
+        <item>Trout</item>
+        <item>Tuna</item>
+        <item>Turkey</item>
+        <item>Turnip root</item>
+        <item>Walnut</item>
+        <item>Welsh</item>
+        <item>Wheat</item>
+        <item>Whey</item>
+        <item>White bean</item>
+        <item>Yam</item>
+        <item>Yogurt</item>
+    </string-array>
+</resources>

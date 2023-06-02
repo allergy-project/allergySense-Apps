@@ -1,4 +1,3 @@
 package com.bangkit.allergysense.utils.preferences
 
-class User {
-}
+data class User(val token: String, val isLog: Boolean)

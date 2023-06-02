@@ -2,4 +2,28 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="Link">#1B3EFA</color>
+    <color name="OnPrimary">#FFFFFFFF</color>
+    <color name="OnPrimaryDark">#253500</color>
+    <color name="PrimaryContainer">#CDEF84</color>
+    <color name="PrimaryContainerDark">#384E00</color>
+    <color name="Testiary">#396660</color>
+    <color name="TestiaryDark">#9FCFC7</color>
+    <color name="btnlangac">#64B3A7</color>
+    <color name="primary">#4C6707</color>
+    <color name="FieldText">#F2ECDF</color>
+    <color name="fieldEdit">#1C0C5B</color>
+    <color name="fieldAdd">#EFEFEF</color>
+    <color name="banner">#F4F3EB</color>
+    <color name="top">#E8E6F2</color>
+    <color name="logo">#4D7570</color>
+
+    <attr format="color" name="boldText"/>
+    <attr format="color" name="textactive"/>
+    <attr format="color" name="textinactive"/>
+    <attr format="color" name="bg"/>
+    <attr format="color" name="button"/>
+    <attr format="color" name="btnlang"/>
+    <attr format="color" name="strokebtnlangactive"/>
+    <attr format="color" name="strokebtnlanginactive"/>
 </resources>

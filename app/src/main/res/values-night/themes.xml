@@ -2,6 +2,14 @@
     <!-- Base application theme. -->
     <style name="Theme.AllergySense" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Customize your dark theme here. -->
+        <item name="button">@color/PrimaryContainerDark</item>
+        <item name="bg">@color/OnPrimaryDark</item>
+        <item name="btnlang">@color/TestiaryDark</item>
+        <item name="strokebtnlangactive">@color/OnPrimary</item>
+        <item name="strokebtnlanginactive">@color/OnPrimary</item>
+        <item name="boldText">@color/OnPrimary</item>
+        <item name="textactive">@color/OnPrimary</item>
+        <item name="textinactive">@color/OnPrimary</item>
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
 </resources>
