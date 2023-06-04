@@ -301,7 +301,7 @@
             android:text="@string/already_have_an_account"/>
 
         <TextView
-            android:id="@+id/regHere"
+            android:id="@+id/logHere"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"

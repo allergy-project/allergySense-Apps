@@ -63,4 +63,7 @@
     <string name="tvhow">Ceritakan apa yang terjadi</string>
     <string name="max_of_word">Maksimal 150 kata</string>
     <string name="checking">Periksa</string>
+    <string name="first_ingredient">Ingredient 1</string>
+    <string name="ingredient_2">Ingredient 2</string>
+    <string name="ingredient_3">Ingredient 3</string>
 </resources>

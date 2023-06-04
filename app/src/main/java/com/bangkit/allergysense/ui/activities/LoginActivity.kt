@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -35,32 +37,62 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         loading(false)
         view()
+        viewPass()
 
         _modelLogin = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
+        binding.regHere.setOnClickListener {
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        login()
+    }
+
+    private fun login() {
         binding.btnlog.setOnClickListener {
             val username = binding.etusername.text.toString()
             val pass = binding.etPass.text.toString()
-            modelLogin.login(username, pass).observe(this@LoginActivity) {result ->
-                if (result != null) {
-                    when (result) {
-                        is Response.Loading -> loading(true)
-                        is Response.Success -> {
-                            loading(false)
-                            Toast.makeText(this@LoginActivity, "Welcome to Allergy Sense", Toast.LENGTH_SHORT).show()
-                            CoroutineScope(Dispatchers.IO).launch {
-                                delay(2000)
-                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                startActivity(intent)
+            when {
+                username.isEmpty() -> binding.etusername.error = "Username is empty! Please fill it!"
+                pass.isEmpty() -> binding.etPass.error = "Password is empty! Please fill it!"
+                pass.length < 8 -> binding.etPass.error = "Password minimum has 8 characters"
+                else -> {
+                    modelLogin.login(username, pass).observe(this@LoginActivity) {result ->
+                        if (result != null) {
+                            when (result) {
+                                is Response.Loading -> loading(true)
+                                is Response.Success -> {
+                                    loading(false)
+                                    Toast.makeText(this@LoginActivity, "Welcome to Allergy Sense", Toast.LENGTH_SHORT).show()
+                                    CoroutineScope(Dispatchers.IO).launch {
+                                        delay(2000)
+                                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                        startActivity(intent)
+                                    }
+                                }
+                                is Response.Error -> {
+                                    loading(false)
+                                    Toast.makeText(this@LoginActivity, result.message, Toast.LENGTH_SHORT).show()
+                                }
                             }
-                        }
-                        is Response.Error -> {
-                            loading(false)
-                            Toast.makeText(this@LoginActivity, "Your username or password is wrong!!!", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
             }
+        }
+    }
+
+    private fun viewPass() {
+        binding.visible.setOnClickListener {
+            binding.invisible.visibility = View.VISIBLE
+            binding.visible.visibility = View.INVISIBLE
+            binding.etPass.transformationMethod = PasswordTransformationMethod.getInstance()
+        }
+        binding.invisible.setOnClickListener {
+            binding.invisible.visibility = View.INVISIBLE
+            binding.visible.visibility = View.VISIBLE
+            binding.etPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
         }
     }
 
