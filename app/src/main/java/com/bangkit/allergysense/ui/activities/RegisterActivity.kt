@@ -61,7 +61,7 @@ class RegisterActivity : AppCompatActivity() {
                 pass.length < 8 -> binding.etPass.error = "Password minimum has 8 characters"
                 vPass != pass -> binding.etVPass.error = "Password is not same! Please check it again!"
                 else -> {
-                    modelRegister.reg(username, email, pass).observe(this@RegisterActivity) { result->
+                    modelRegister.reg(username, email, pass).observe(this@RegisterActivity) { result ->
                         if (result != null) {
                             when (result) {
                                 is Response.Loading -> loading(true)

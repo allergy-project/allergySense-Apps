@@ -33,6 +33,7 @@ class AllergyRepository(private val apiService: APIService) {
             val service = apiService.getDetailHistory(auth, id)
             val response = service.data
             val data = Data(
+                response?.id,
                 response?.imageUrl,
                 response?.allergy,
                 response?.createdAt,

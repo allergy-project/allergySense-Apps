@@ -1,6 +1,7 @@
 package com.bangkit.allergysense.utils.responses
 
 import com.google.gson.annotations.SerializedName
+import retrofit2.http.Field
 
 data class GetDetailHistoryResponse(
 
@@ -15,6 +16,9 @@ data class GetDetailHistoryResponse(
 )
 
 data class Data(
+
+	@field:SerializedName("id")
+	val id: String? = null,
 
 	@field:SerializedName("image_url")
 	val imageUrl: String? = null,
