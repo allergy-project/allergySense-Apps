@@ -3,10 +3,11 @@ package com.bangkit.allergysense.ui.activities
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -21,11 +22,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val rootView = binding.root as ViewGroup
+        setContentView(rootView)
         view()
 
+        if (intent.getStringExtra("check")?.equals("navAllergy") == true) {
+            moveToFragment(AllergyFragment())
+        } else if (intent.getStringExtra("detailChecl")?.equals("navAllergy") == true) {
+            moveToFragment(AllergyFragment())
+        }
+
         val navView: BottomNavigationView = binding.navView
-        val navController = findNavController(R.id.navHostFragment)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragmentActivityMain) as NavHostFragment
+        val navController = navHostFragment.navController
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -34,18 +43,12 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        if (intent.getStringExtra("check")?.equals("navAllergy")!!) {
-            moveToFragment(AllergyFragment())
-        } else if (intent.getStringExtra("detailChecl")?.equals("navAllergy")!!) {
-            moveToFragment(AllergyFragment())
-        }
     }
 
     private fun moveToFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.navHostFragment, fragment)
+        fragmentTransaction.replace(R.id.navHostFragmentActivityMain, fragment)
         fragmentTransaction.commit()
     }
 

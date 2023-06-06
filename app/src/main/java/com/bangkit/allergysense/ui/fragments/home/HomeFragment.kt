@@ -16,6 +16,8 @@ import com.bangkit.allergysense.databinding.FragmentHomeBinding
 import com.bangkit.allergysense.ui.adapters.ListAdapter
 import com.bangkit.allergysense.utils.repositories.Response
 import com.bangkit.allergysense.utils.responses.Quote
+import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
+import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.HistoriesViewModel
 import com.bangkit.allergysense.utils.viewmodels.LoginViewModel
 import com.bangkit.allergysense.utils.viewmodels.QuotesViewModel
@@ -38,17 +40,18 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(layoutInflater)
-        return binding.root
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loading(false)
 
-        modelUser = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[LoginViewModel::class.java]
-        modelQuote = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[QuotesViewModel::class.java]
-        modelHistories = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[HistoriesViewModel::class.java]
+        modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
+        modelQuote = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[QuotesViewModel::class.java]
+        modelHistories = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[HistoriesViewModel::class.java]
 
         modelUser.user().observe(viewLifecycleOwner) {
             modelQuote.quotes(it.token).observe(viewLifecycleOwner) { result ->

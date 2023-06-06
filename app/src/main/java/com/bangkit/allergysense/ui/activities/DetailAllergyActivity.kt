@@ -23,8 +23,10 @@ import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.DetailHistoryViewModel
 import com.bangkit.allergysense.utils.viewmodels.LoginViewModel
 import com.bumptech.glide.Glide
+import java.text.SimpleDateFormat
 import java.time.Instant
 import java.util.Date
+import java.util.Locale
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "set")
 class DetailAllergyActivity : AppCompatActivity() {
@@ -44,13 +46,13 @@ class DetailAllergyActivity : AppCompatActivity() {
         view()
 
         _modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
-        _modelDetail = ViewModelProvider(this, AllergyViewModelFactory.getIntance(dataStore))[DetailHistoryViewModel::class.java]
+        _modelDetail = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[DetailHistoryViewModel::class.java]
 
         val id = intent.getStringExtra(EXTRA_ID)
         Log.v("id", id.toString())
 
         binding.backarrow.setOnClickListener {
-            if (intent.getStringExtra("result")?.equals("detail")!!) {
+            if (intent.getStringExtra("result")?.equals("detail") == true) {
                 val intent = Intent(this@DetailAllergyActivity, UploadAllergyActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -86,13 +88,15 @@ class DetailAllergyActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun detail (allergy: Data) {
-        val format = Instant.parse(allergy.createdAt.toString())
-        val date = Date.from(format)
+        val created = allergy.createdAt ?: 0
+        val date = Date(created)
+        val format = SimpleDateFormat("dd MMMM yyyy - HH:mm", Locale.getDefault())
+        val formatted = format.format(date)
         Glide.with(this)
             .load(allergy.imageUrl)
             .into(binding.ivAllergy)
         binding.allergy.text = allergy.allergy
-        binding.date.text = date.toString()
+        binding.date.text = formatted
         binding.whyDesc.text = allergy.problem
         binding.howDesc.text = allergy.suggest
         Log.v("Allergy", allergy.allergy.toString())

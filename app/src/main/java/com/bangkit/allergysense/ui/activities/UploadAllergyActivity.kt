@@ -61,7 +61,7 @@ class UploadAllergyActivity : AppCompatActivity() {
         spinner()
 
         _modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
-        _modelUpload = ViewModelProvider(this, AllergyViewModelFactory.getIntance(dataStore))[CheckViewModel::class.java]
+        _modelUpload = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[CheckViewModel::class.java]
 
         binding.btnGal.setOnClickListener {
             val intent = Intent()
@@ -72,8 +72,7 @@ class UploadAllergyActivity : AppCompatActivity() {
         }
 
         binding.backarrow.setOnClickListener {
-            val intent = Intent(this@UploadAllergyActivity, AllergyFragment::class.java)
-                .putExtra("check", "navAllergy")
+            val intent = Intent(this@UploadAllergyActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
         }

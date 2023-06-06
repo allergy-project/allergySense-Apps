@@ -16,6 +16,8 @@ import com.bangkit.allergysense.databinding.FragmentProfileBinding
 import com.bangkit.allergysense.ui.activities.LoginActivity
 import com.bangkit.allergysense.utils.repositories.Response
 import com.bangkit.allergysense.utils.responses.Profile
+import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
+import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.LoginViewModel
 import com.bangkit.allergysense.utils.viewmodels.LogoutViewModel
 import com.bangkit.allergysense.utils.viewmodels.ProfileViewModel
@@ -39,17 +41,18 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentProfileBinding.inflate(layoutInflater)
-        return binding.root
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loading(false)
 
-        modelProfile = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[ProfileViewModel::class.java]
-        modelUser = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[LoginViewModel::class.java]
-        modelLogout = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[LogoutViewModel::class.java]
+        modelProfile = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[ProfileViewModel::class.java]
+        modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
+        modelLogout = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LogoutViewModel::class.java]
 
         binding.tvLogout.setOnClickListener {
             modelLogout.logout()

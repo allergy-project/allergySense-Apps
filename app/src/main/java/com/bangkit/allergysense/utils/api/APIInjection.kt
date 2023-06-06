@@ -12,7 +12,7 @@ object APIInjection {
         val userPreferences = UserPreferences.getInstance(dataStore)
         return AuthRepository(apiService, userPreferences)
     }
-    fun provideAllergyRepository(dataStore: DataStore<Preferences>) : AllergyRepository {
+    fun provideAllergyRepository() : AllergyRepository {
         val apiService = APIConfig.getApiService()
         return AllergyRepository(apiService)
     }

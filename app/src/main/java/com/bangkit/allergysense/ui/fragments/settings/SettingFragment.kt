@@ -15,8 +15,22 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSettingBinding.inflate(layoutInflater)
-        return binding.root
+        _binding = FragmentSettingBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        loading(false)
+    }
+
+    private fun loading(isLoad: Boolean) {
+        if (isLoad) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
     }
 
     override fun onDestroy() {

@@ -1,7 +1,5 @@
 package com.bangkit.allergysense.utils.viewmodels
 
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.allergysense.utils.api.APIInjection
@@ -27,8 +25,8 @@ class AllergyViewModelFactory(private val allergyRepository: AllergyRepository):
     companion object {
         @Volatile
         private var instance: AllergyViewModelFactory? = null
-        fun getIntance(dataStore: DataStore<Preferences>): AllergyViewModelFactory = instance ?: synchronized(this) {
-            instance ?: AllergyViewModelFactory(APIInjection.provideAllergyRepository(dataStore))
+        fun getIntance(): AllergyViewModelFactory = instance ?: synchronized(this) {
+            instance ?: AllergyViewModelFactory(APIInjection.provideAllergyRepository())
         }.also { instance = it }
     }
 }

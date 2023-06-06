@@ -42,7 +42,7 @@
             android:fontFamily="@font/product_sans_regular"
             android:textColor="@color/white"
             android:textStyle="normal"
-            android:textSize="14sp"
+            android:textSize="24sp"
             android:text="@string/welcome_back"/>
 
 <!--    quotes    -->

@@ -162,7 +162,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:src="@drawable/baseline_visibility_24"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:contentDescription="@string/visible"/>
 
         <ImageView
@@ -174,7 +174,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:src="@drawable/baseline_visibility_off_24"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:contentDescription="@string/invisible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

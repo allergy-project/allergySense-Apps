@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.MainActivity"
-    android:background="?attr/bg">
+    tools:context=".ui.activities.MainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navView"
@@ -17,16 +16,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/bottom_nav"/>
 
-    <fragment
-        android:id="@+id/navHostFragment"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/navHostFragmentActivityMain"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/navView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/mobile_navigation"/>
+        app:layout_constraintBottom_toTopOf="@id/navView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

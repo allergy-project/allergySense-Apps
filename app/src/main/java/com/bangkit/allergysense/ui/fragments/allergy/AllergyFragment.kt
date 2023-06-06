@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.allergysense.databinding.FragmentAllergyBinding
 import com.bangkit.allergysense.ui.activities.UploadAllergyActivity
 import com.bangkit.allergysense.ui.adapters.ListAdapter
+import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
+import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.HistoriesViewModel
 import com.bangkit.allergysense.utils.viewmodels.LoginViewModel
 
@@ -35,8 +37,9 @@ class AllergyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAllergyBinding.inflate(layoutInflater)
-        return binding.root
+        _binding = FragmentAllergyBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,8 +51,8 @@ class AllergyFragment : Fragment() {
             startActivity(intent)
         }
 
-        modelUser = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[LoginViewModel::class.java]
-        modelHistories = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[HistoriesViewModel::class.java]
+        modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
+        modelHistories = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[HistoriesViewModel::class.java]
 
         val adapter = ListAdapter()
         binding.rvHistory.adapter = adapter
