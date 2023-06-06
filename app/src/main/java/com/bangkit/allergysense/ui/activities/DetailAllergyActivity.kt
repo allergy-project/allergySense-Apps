@@ -1,6 +1,7 @@
 package com.bangkit.allergysense.ui.activities
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,9 +14,7 @@ import androidx.annotation.RequiresApi
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.bangkit.allergysense.R
 import com.bangkit.allergysense.databinding.ActivityDetailAllergyBinding
 import com.bangkit.allergysense.utils.repositories.Response
 import com.bangkit.allergysense.utils.responses.Data
@@ -49,6 +48,19 @@ class DetailAllergyActivity : AppCompatActivity() {
 
         val id = intent.getStringExtra(EXTRA_ID)
         Log.v("id", id.toString())
+
+        binding.backarrow.setOnClickListener {
+            if (intent.getStringExtra("result")?.equals("detail")!!) {
+                val intent = Intent(this@DetailAllergyActivity, UploadAllergyActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                val intent = Intent(this@DetailAllergyActivity, MainActivity::class.java)
+                    .putExtra("detailCheck", "navAllergy")
+                startActivity(intent)
+                finish()
+            }
+        }
 
         modelUser.user().observe(this@DetailAllergyActivity) {
             modelDetail.getDetail(it.token, id!!).observe(this@DetailAllergyActivity) { result ->

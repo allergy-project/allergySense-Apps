@@ -3,7 +3,6 @@ package com.bangkit.allergysense.ui.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bangkit.allergysense.R
 import com.bangkit.allergysense.databinding.ActivityVerifyBinding
 
 class VerifyActivity : AppCompatActivity() {

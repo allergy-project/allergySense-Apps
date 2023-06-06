@@ -11,7 +11,6 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.bangkit.allergysense.R
 import com.bangkit.allergysense.databinding.ActivitySplashScreenBinding
 import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.LoginViewModel

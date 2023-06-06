@@ -31,7 +31,7 @@ class AuthRepository(private val apiService: APIService, private val userPrefere
         } catch (e: HttpException) {
             emit(Response.Error(
                 try {
-                    e.response()?.errorBody()?.string().let { JSONObject(it).get("message") }
+                    e.response()?.errorBody()?.string().let { JSONObject(it.toString()).get("message") }
                 } catch (e: JSONException) {
                     e.localizedMessage
                 } as String
@@ -47,7 +47,7 @@ class AuthRepository(private val apiService: APIService, private val userPrefere
         } catch (e: HttpException) {
             emit(Response.Error(
                 try {
-                    e.response()?.errorBody()?.string().let { JSONObject(it).get("message") }
+                    e.response()?.errorBody()?.string().let { JSONObject(it.toString()).get("message") }
                 } catch (e: JSONException) {
                     e.localizedMessage
                 } as String

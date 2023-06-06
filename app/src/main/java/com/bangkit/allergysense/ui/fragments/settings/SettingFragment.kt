@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bangkit.allergysense.R
 import com.bangkit.allergysense.databinding.FragmentSettingBinding
 
 class SettingFragment : Fragment() {

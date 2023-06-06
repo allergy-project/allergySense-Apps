@@ -1,7 +1,6 @@
 package com.bangkit.allergysense.utils.responses
 
 import com.google.gson.annotations.SerializedName
-import retrofit2.http.Field
 
 data class GetDetailHistoryResponse(
 

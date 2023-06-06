@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.allergysense.databinding.ListHistoryBinding
 import com.bangkit.allergysense.utils.responses.DataItem
-import com.bumptech.glide.Glide
 import java.time.Instant
 import java.util.Date
 

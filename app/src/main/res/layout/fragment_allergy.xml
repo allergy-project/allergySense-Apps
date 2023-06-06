@@ -91,6 +91,22 @@
             android:textColor="?attr/boldText"
             android:text="@string/history_of_allergy"/>
 
+        <TextView
+            android:id="@+id/historyNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/history"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/product_sans_medium"
+            android:textStyle="normal"
+            android:textSize="18sp"
+            android:textColor="?attr/boldText"
+            android:textAlignment="center"
+            android:text="@string/history_note"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvHistory"
             android:layout_width="match_parent"

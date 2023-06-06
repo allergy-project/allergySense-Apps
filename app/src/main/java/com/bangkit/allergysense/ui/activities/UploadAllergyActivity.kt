@@ -16,15 +16,13 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.bangkit.allergysense.Manifest
 import com.bangkit.allergysense.R
 import com.bangkit.allergysense.databinding.ActivityUploadAllergyBinding
+import com.bangkit.allergysense.ui.fragments.allergy.AllergyFragment
 import com.bangkit.allergysense.utils.helpers.uriToFile
 import com.bangkit.allergysense.utils.repositories.Response
 import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
@@ -73,6 +71,13 @@ class UploadAllergyActivity : AppCompatActivity() {
             launcherIntentGallery.launch(intent)
         }
 
+        binding.backarrow.setOnClickListener {
+            val intent = Intent(this@UploadAllergyActivity, AllergyFragment::class.java)
+                .putExtra("check", "navAllergy")
+            startActivity(intent)
+            finish()
+        }
+
         binding.btnCek.setOnClickListener {
             when {
                 myFile == null -> Toast.makeText(this@UploadAllergyActivity, "Choose Image", Toast.LENGTH_SHORT).show()
@@ -98,6 +103,7 @@ class UploadAllergyActivity : AppCompatActivity() {
                                                 CoroutineScope(Dispatchers.IO).launch {
                                                     delay(1000)
                                                     val intent = Intent(this@UploadAllergyActivity, DetailAllergyActivity::class.java)
+                                                        .putExtra("result", "detail")
                                                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                                     startActivity(intent)
                                                 }
