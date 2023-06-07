@@ -87,7 +87,7 @@ class UploadAllergyActivity : AppCompatActivity() {
                     val file = compress(myFile as File)
                     val etHow = binding.etHow.text.toString().toRequestBody("text/plain".toMediaType())
                     val img = file.asRequestBody("image/jpeg".toMediaType())
-                    val imgMultipart: MultipartBody.Part = MultipartBody.Part.createFormData("photo", file.name, img)
+                    val imgMultipart: MultipartBody.Part = MultipartBody.Part.createFormData("allergy_image", file.name, img)
                     val foodArray = selectedFood?.toString()?.toRequestBody("text/plain".toMediaType())
                     modelUser.user().observe(this@UploadAllergyActivity) { user ->
                         if (user.token.isNotEmpty()) {
@@ -102,7 +102,6 @@ class UploadAllergyActivity : AppCompatActivity() {
                                                 CoroutineScope(Dispatchers.IO).launch {
                                                     delay(1000)
                                                     val intent = Intent(this@UploadAllergyActivity, DetailAllergyActivity::class.java)
-                                                        .putExtra("result", "detail")
                                                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                                     startActivity(intent)
                                                 }

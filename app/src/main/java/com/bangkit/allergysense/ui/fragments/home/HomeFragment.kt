@@ -103,6 +103,22 @@ class HomeFragment : Fragment() {
                 loading(false)
                 adapter.submitData(lifecycle, data)
             }
+            modelQuote.quotes(it.token).observe(viewLifecycleOwner) { result->
+                if (result != null) {
+                    when (result) {
+                        is Response.Loading -> loading(true)
+                        is Response.Success -> {
+                            loading(false)
+                            val quote = result.data
+                            getQuote(quote)
+                        }
+                        is Response.Error -> {
+                            loading(false)
+                            Toast.makeText(context, result.message, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
         }
     }
 

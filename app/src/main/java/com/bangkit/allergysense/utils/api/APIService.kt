@@ -17,6 +17,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface APIService {
     @FormUrlEncoded
@@ -37,6 +38,8 @@ interface APIService {
     @GET("histories")
     suspend fun getHistories(
         @Header("Authorization") auth: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int
     ) : GetHistoriesResponse
 
     @GET("histories/{id}")
@@ -59,7 +62,7 @@ interface APIService {
     @POST("ml/allergy-check")
     suspend fun check(
         @Header("Authorization") auth: String,
-        @Part("allergy_image") file: MultipartBody.Part,
+        @Part file: MultipartBody.Part,
         @Part("problem") problem: RequestBody,
         @Part("allergen_code_number") code: RequestBody,
     ) : AllergyCheckResponse

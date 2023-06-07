@@ -22,7 +22,7 @@ import retrofit2.HttpException
 class AllergyRepository(private val apiService: APIService) {
     fun getHistories(token: String) : LiveData<PagingData<DataItem>> {
         return Pager(
-            config = PagingConfig(pageSize = 6),
+            config = PagingConfig(pageSize = 8),
             pagingSourceFactory = { Paging(apiService, token) }
         ).liveData
     }

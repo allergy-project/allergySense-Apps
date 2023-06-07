@@ -35,7 +35,7 @@ class ListAdapter: PagingDataAdapter<DataItem, ListAdapter.ListViewHolder>(DIFF_
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ListAdapter.ListViewHolder, position: Int) {
         val histories = getItem(position)
         if (histories != null) {
             holder.bind(histories)

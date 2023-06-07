@@ -65,19 +65,22 @@ class DetailAllergyActivity : AppCompatActivity() {
         }
 
         modelUser.user().observe(this@DetailAllergyActivity) {
-            modelDetail.getDetail(it.token, id!!).observe(this@DetailAllergyActivity) { result ->
-                if (result != null) {
-                    when (result) {
-                        is Response.Loading -> loading(true)
-                        is Response.Success -> {
-                            loading(false)
-                            val allergy = result.data
-                            detail(allergy)
-                            Toast.makeText(this@DetailAllergyActivity, "Successfully loaded allergy details", Toast.LENGTH_SHORT).show()
-                        }
-                        is Response.Error -> {
-                            loading(false)
-                            Toast.makeText(this@DetailAllergyActivity, "Failed to load allergy details", Toast.LENGTH_SHORT).show()
+            id?.let { it1 ->
+                modelDetail.getDetail(it.token, it1).observe(this@DetailAllergyActivity) { result ->
+                    if (result != null) {
+                        when (result) {
+                            is Response.Loading -> loading(true)
+                            is Response.Success -> {
+                                loading(false)
+                                val allergy = result.data
+                                detail(allergy)
+                                Toast.makeText(this@DetailAllergyActivity, "Successfully loaded allergy details", Toast.LENGTH_SHORT).show()
+                            }
+
+                            is Response.Error -> {
+                                loading(false)
+                                Toast.makeText(this@DetailAllergyActivity, "Failed to load allergy details", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                 }
