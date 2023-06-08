@@ -66,4 +66,5 @@
     <string name="first_ingredient">Ingredient 1</string>
     <string name="ingredient_2">Ingredient 2</string>
     <string name="ingredient_3">Ingredient 3</string>
+    <string name="fabadd">FabAdd</string>
 </resources>

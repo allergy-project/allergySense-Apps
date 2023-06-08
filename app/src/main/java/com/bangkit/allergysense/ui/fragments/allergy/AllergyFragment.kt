@@ -54,6 +54,11 @@ class AllergyFragment : Fragment() {
             startActivity(intent)
         }
 
+        binding.fabAdd.setOnClickListener {
+            val intent = Intent(context, UploadAllergyActivity::class.java)
+            startActivity(intent)
+        }
+
         modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
         modelHistories = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[HistoriesViewModel::class.java]
 

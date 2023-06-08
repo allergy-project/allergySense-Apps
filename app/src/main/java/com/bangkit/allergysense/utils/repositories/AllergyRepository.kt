@@ -2,12 +2,7 @@ package com.bangkit.allergysense.utils.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.liveData
 import com.bangkit.allergysense.utils.api.APIService
-import com.bangkit.allergysense.utils.paging.Paging
 import com.bangkit.allergysense.utils.responses.AllergyCheckResponse
 import com.bangkit.allergysense.utils.responses.Data
 import com.bangkit.allergysense.utils.responses.DataItem

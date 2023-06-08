@@ -22,10 +22,8 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.allergysense.R
 import com.bangkit.allergysense.databinding.ActivityUploadAllergyBinding
-import com.bangkit.allergysense.ui.fragments.allergy.AllergyFragment
 import com.bangkit.allergysense.utils.helpers.uriToFile
 import com.bangkit.allergysense.utils.repositories.Response
-import com.bangkit.allergysense.utils.responses.Check
 import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.CheckViewModel

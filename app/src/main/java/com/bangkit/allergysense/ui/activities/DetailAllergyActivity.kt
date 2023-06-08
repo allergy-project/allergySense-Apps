@@ -24,7 +24,6 @@ import com.bangkit.allergysense.utils.viewmodels.DetailHistoryViewModel
 import com.bangkit.allergysense.utils.viewmodels.LoginViewModel
 import com.bumptech.glide.Glide
 import java.text.SimpleDateFormat
-import java.time.Instant
 import java.util.Date
 import java.util.Locale
 
