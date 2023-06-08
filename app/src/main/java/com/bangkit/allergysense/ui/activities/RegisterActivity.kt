@@ -59,6 +59,7 @@ class RegisterActivity : AppCompatActivity() {
                 pass.isEmpty() -> binding.etPass.error = "Your password is empty! Please fill it!"
                 pass.length < 8 -> binding.etPass.error = "Password minimum has 8 characters"
                 vPass != pass -> binding.etVPass.error = "Password is not same! Please check it again!"
+                vPass.isEmpty() -> binding.etVPass.error = "Your verify password is empty! Plase fill it"
                 else -> {
                     modelRegister.reg(username, email, pass).observe(this@RegisterActivity) { result ->
                         if (result != null) {
@@ -100,14 +101,14 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun viewVPass() {
-        binding.visible.setOnClickListener {
-            binding.invisible.visibility = View.VISIBLE
-            binding.visible.visibility = View.INVISIBLE
+        binding.vVisible.setOnClickListener {
+            binding.vInvisible.visibility = View.VISIBLE
+            binding.vVisible.visibility = View.INVISIBLE
             binding.etVPass.transformationMethod = PasswordTransformationMethod.getInstance()
         }
-        binding.invisible.setOnClickListener {
-            binding.invisible.visibility = View.INVISIBLE
-            binding.visible.visibility = View.VISIBLE
+        binding.vInvisible.setOnClickListener {
+            binding.vInvisible.visibility = View.INVISIBLE
+            binding.vVisible.visibility = View.VISIBLE
             binding.etVPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
         }
     }

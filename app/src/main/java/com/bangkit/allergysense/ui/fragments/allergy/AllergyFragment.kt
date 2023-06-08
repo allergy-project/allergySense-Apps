@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.allergysense.databinding.FragmentAllergyBinding
 import com.bangkit.allergysense.ui.activities.UploadAllergyActivity
 import com.bangkit.allergysense.ui.adapters.ListAdapter
+import com.bangkit.allergysense.utils.repositories.Response
+import com.bangkit.allergysense.utils.responses.DataItem
 import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.HistoriesViewModel
@@ -54,19 +57,26 @@ class AllergyFragment : Fragment() {
         modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
         modelHistories = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[HistoriesViewModel::class.java]
 
-        val adapter = ListAdapter()
-        binding.rvHistory.adapter = adapter
-        binding.rvHistory.layoutManager = LinearLayoutManager(context)
 
         when (binding.rvHistory.adapter) {
             null -> binding.historyNote.visibility = View.VISIBLE
             else -> {
-                binding.historyNote.visibility = View.GONE
                 modelUser.user().observe(viewLifecycleOwner) {
-                    loading(true)
                     modelHistories.getHistories(it.token).observe(viewLifecycleOwner) { data ->
-                        loading(false)
-                        adapter.submitData(lifecycle, data)
+                        if (data != null) {
+                            when (data) {
+                                is Response.Loading -> loading(true)
+                                is Response.Success -> {
+                                    loading(false)
+                                    binding.historyNote.visibility = View.GONE
+                                    recyclerList(data.data)
+                                }
+                                is Response.Error -> {
+                                    loading(false)
+                                    Toast.makeText(context, data.message, Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -76,16 +86,31 @@ class AllergyFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         loading(false)
-        val adapter = ListAdapter()
-        binding.rvHistory.adapter = adapter
 
         modelUser.user().observe(viewLifecycleOwner) {
-            loading(true)
             modelHistories.getHistories(it.token).observe(viewLifecycleOwner) { data ->
-                loading(false)
-                adapter.submitData(lifecycle, data)
+                if (data != null) {
+                    when (data) {
+                        is Response.Loading -> loading(true)
+                        is Response.Success -> {
+                            loading(false)
+                            binding.historyNote.visibility = View.GONE
+                            recyclerList(data.data)
+                        }
+                        is Response.Error -> {
+                            loading(false)
+                            Toast.makeText(context, data.message, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
             }
         }
+    }
+
+    private fun recyclerList(list: List<DataItem>) {
+        binding.rvHistory.layoutManager = LinearLayoutManager(context)
+        val listAdapter = ListAdapter(list)
+        binding.rvHistory.adapter = listAdapter
     }
 
     private fun loading(isLoad: Boolean) {

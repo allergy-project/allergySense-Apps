@@ -25,6 +25,7 @@ import com.bangkit.allergysense.databinding.ActivityUploadAllergyBinding
 import com.bangkit.allergysense.ui.fragments.allergy.AllergyFragment
 import com.bangkit.allergysense.utils.helpers.uriToFile
 import com.bangkit.allergysense.utils.repositories.Response
+import com.bangkit.allergysense.utils.responses.Check
 import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.CheckViewModel
@@ -102,8 +103,9 @@ class UploadAllergyActivity : AppCompatActivity() {
                                                 CoroutineScope(Dispatchers.IO).launch {
                                                     delay(1000)
                                                     val intent = Intent(this@UploadAllergyActivity, DetailAllergyActivity::class.java)
-                                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                                    intent.putExtra(DetailAllergyActivity.EXTRA_ID, result.data.data?.historyId)
                                                     startActivity(intent)
+                                                    finish()
                                                 }
                                             }
                                             is Response.Error -> {
@@ -164,8 +166,8 @@ class UploadAllergyActivity : AppCompatActivity() {
             bitmap.compress(Bitmap.CompressFormat.JPEG, quality, bmpStream)
             val bmpPicByteArray = bmpStream.toByteArray()
             length = bmpPicByteArray.size
-            quality -= 6
-        } while (length > 1000000)
+            quality -= 5
+        } while (length > 3000000)
         bitmap.compress(Bitmap.CompressFormat.JPEG, quality, FileOutputStream(file))
         return file
     }

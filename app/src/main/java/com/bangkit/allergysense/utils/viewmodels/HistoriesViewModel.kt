@@ -9,5 +9,5 @@ import com.bangkit.allergysense.utils.repositories.AllergyRepository
 import com.bangkit.allergysense.utils.responses.DataItem
 
 class HistoriesViewModel(private val allergyRepository: AllergyRepository): ViewModel() {
-    fun getHistories(token: String): LiveData<PagingData<DataItem>> = allergyRepository.getHistories(token).cachedIn(viewModelScope)
+    fun getHistories(token: String) = allergyRepository.getHistories(token)
 }

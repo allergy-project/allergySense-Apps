@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.allergysense.databinding.FragmentHomeBinding
 import com.bangkit.allergysense.ui.adapters.ListAdapter
 import com.bangkit.allergysense.utils.repositories.Response
+import com.bangkit.allergysense.utils.responses.DataItem
 import com.bangkit.allergysense.utils.responses.Quote
 import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
@@ -72,19 +73,25 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val adapter = ListAdapter()
-        binding.rvHistory.adapter = adapter
-        binding.rvHistory.layoutManager = LinearLayoutManager(context)
-
         when (binding.rvHistory.adapter) {
             null -> binding.historyNote.visibility = View.VISIBLE
             else -> {
-                binding.historyNote.visibility = View.GONE
                 modelUser.user().observe(viewLifecycleOwner) {
-                    loading(true)
                     modelHistories.getHistories(it.token).observe(viewLifecycleOwner) { data ->
-                        loading(false)
-                        adapter.submitData(lifecycle, data)
+                        if (data != null) {
+                            when (data) {
+                                is Response.Loading -> loading(true)
+                                is Response.Success -> {
+                                    loading(false)
+                                    binding.historyNote.visibility = View.GONE
+                                    recyclerList(data.data)
+                                }
+                                is Response.Error -> {
+                                    loading(false)
+                                    Toast.makeText(context, data.message, Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -94,14 +101,23 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         loading(false)
-        val adapter = ListAdapter()
-        binding.rvHistory.adapter = adapter
 
         modelUser.user().observe(viewLifecycleOwner) {
-            loading(true)
             modelHistories.getHistories(it.token).observe(viewLifecycleOwner) { data ->
-                loading(false)
-                adapter.submitData(lifecycle, data)
+                if (data != null) {
+                    when (data) {
+                        is Response.Loading -> loading(true)
+                        is Response.Success -> {
+                            loading(false)
+                            binding.historyNote.visibility = View.GONE
+                            recyclerList(data.data)
+                        }
+                        is Response.Error -> {
+                            loading(false)
+                            Toast.makeText(context, data.message, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
             }
             modelQuote.quotes(it.token).observe(viewLifecycleOwner) { result->
                 if (result != null) {
@@ -125,6 +141,12 @@ class HomeFragment : Fragment() {
     private fun getQuote(quote: Quote) {
         binding.quote.text = quote.quote
         binding.quoter.text = quote.author
+    }
+
+    private fun recyclerList(list: List<DataItem>) {
+        binding.rvHistory.layoutManager = LinearLayoutManager(context)
+        val listAdapter = ListAdapter(list)
+        binding.rvHistory.adapter = listAdapter
     }
 
     private fun loading(isLoad: Boolean) {

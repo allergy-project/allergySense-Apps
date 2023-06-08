@@ -56,6 +56,7 @@ class ProfileFragment : Fragment() {
 
         binding.tvLogout.setOnClickListener {
             modelLogout.logout()
+            Toast.makeText(context, "Goodbye, I will miss you", Toast.LENGTH_SHORT).show()
             val intent = Intent(context, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)

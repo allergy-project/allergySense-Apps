@@ -20,11 +20,28 @@ import org.json.JSONObject
 import retrofit2.HttpException
 
 class AllergyRepository(private val apiService: APIService) {
-    fun getHistories(token: String) : LiveData<PagingData<DataItem>> {
-        return Pager(
-            config = PagingConfig(pageSize = 8),
-            pagingSourceFactory = { Paging(apiService, token) }
-        ).liveData
+    fun getHistories(token: String) : LiveData<Response<List<DataItem>>> = liveData{
+        emit(Response.Loading)
+        try {
+            val service = apiService.getHistories(token)
+            val response = service.data
+            val data = response.map {
+                DataItem(
+                    it.allergy,
+                    it.createdAt,
+                    it.id
+                )
+            }
+            emit(Response.Success(data))
+        } catch (e: HttpException) {
+            emit(Response.Error(
+                try {
+                    e.response()?.errorBody()?.string()?.let { JSONObject(it).get("message") }
+                } catch (e: JSONException) {
+                    e.localizedMessage
+                } as String
+            ))
+        }
     }
 
     fun getDetailHistory(auth: String, id: String): LiveData<Response<Data>> = liveData {
