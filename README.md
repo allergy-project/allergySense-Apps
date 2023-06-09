@@ -1,6 +1,6 @@
 # AllergySense-Apps
 ## Tutorial lengkap tentang aplikasi
-- bisa buka pada halaman [Website AlergySense](https://github.com)
+- bisa buka pada halaman [Website AlergySense](https://github.com](https://allergy-project.github.io/allergySense-Apps/)
 
 ## Pembuat Aplikasi Mobile
 
