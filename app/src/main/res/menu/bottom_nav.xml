@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navHome"
+        android:icon="@drawable/home_fill"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/navAllergy"
+        android:icon="@drawable/bacteria_fill"
+        android:title="@string/allergy"/>
+    <item
+        android:id="@+id/navProfile"
+        android:icon="@drawable/user_fill"
+        android:title="@string/profile"/>
+    <item
+        android:id="@+id/navSetting"
+        android:icon="@drawable/setting_fill"
+        android:title="@string/setting"/>
+
+</menu>

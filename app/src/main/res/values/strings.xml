@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">Allergy Sense</string>
+    <string name="account_sign_in">Login</string>
+    <string name="id">ID</string>
+    <string name="eng">ENG</string>
+    <string name="iv_profile">iv profile</string>
+    <string name="please_login_to_your_account">Please login to your account</string>
+    <string name="username">Username</string>
+    <string name="your_password_wrong">Your password is wrong!</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="password">Password</string>
+    <string name="visible">visible</string>
+    <string name="invisible">invisible</string>
+    <string name="login">Login</string>
+    <string name="dont_have_an_account">Dont have an account yet?</string>
+    <string name="reg_here">Register here</string>
+    <string name="forgot_password">Lupa password?</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="register_account">Register</string>
+    <string name="email">Email</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="password_verification">Password Verification</string>
+    <string name="verification_your_password">Verify your password</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="log_here">Login here</string>
+    <string name="home">Home</string>
+    <string name="allergy">Allergy</string>
+    <string name="profile">Profile</string>
+    <string name="setting">Setting</string>
+    <!--  frag -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_back">Hi, welcome back</string>
+    <string name="dummy_quote">This is Quotes</string>
+    <string name="dummy_quoter">Author</string>
+    <string name="history">History</string>
+    <string name="history_note">You dont have a history of allergies</string>
+    <string name="date">Date</string>
+    <string name="button_edit">button_edit</string>
+    <string name="edit">edit</string>
+    <string name="line">line</string>
+    <string name="icon">icon</string>
+    <string name="policy">Terms and Conditions</string>
+    <string name="logout">Logout</string>
+    <string name="add_image_note">Enter a photo of your skin that is suspected of having allergic symptoms</string>
+    <string name="history_of_allergy">Your allergy history</string>
+    <string name="logo">logo</string>
+    <string name="about_apps">About apps</string>
+    <string name="back">back</string>
+    <string name="detail_allergy">Allergy details</string>
+    <string name="image">image</string>
+    <string name="problem">Problems that occur</string>
+    <string name="dummy_why_desc">This is a problem description</string>
+    <string name="solution">Suggested solution</string>
+    <string name="dummy_solution_desc">This is the given solution</string>
+    <string name="verify_account">Account Verification</string>
+    <string name="verify_note">Please check and verify your account on the email you entered earlier!!!</string>
+    <string name="ok">Ok</string>
+    <string name="allergy_cek">Check your allergies</string>
+    <string name="ivallergy">ivallergy</string>
+    <string name="gallery">Gallery</string>
+    <string name="tvfood">The food you eat</string>
+    <string name="tvhow">Tell me what happened</string>
+    <string name="max_of_word">Maximum 150 words</string>
+    <string name="checking">Check</string>
+    <string name="first_ingredient">Ingredient 1</string>
+    <string name="ingredient_2">Ingredient 2</string>
+    <string name="ingredient_3">Ingredient 3</string>
+    <string name="fabadd">FabAdd</string>
+    <string name="terms">Terms and Conditions</string>
+    <string name="last_update">6 Juni 2023</string>
+    <string name="isianTerms">Ini isian terms</string>
+    <string name="terms_isian">We are AlergySense ("Company," "we," "us," "our"), a company registered in Indonesia at Bandung Cibiru, Bandung, Bandung 40625.
+We operate the mobile application AlergySense (the "App"), as well as any other related products and services that refer or link to these legal terms (the "Legal Terms") (collectively, the "Services").
+alergy sense is an application for users with allergies who have difficulty finding solutions when their allergies have no solution to cure.
+You can contact us by email at alergysense102@gmail.com or by mail to Bandung Cibiru, Bandung, Bandung 40625, Indonesia.
+These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), and AlergSense, concerning your access to and use of the Services. You agree that by accessing the Services, you have read, understood, and agreed to be bound by all of these Legal Terms. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY.
+Supplemental terms and conditions or documents that may be posted on the Services from time to time are hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make changes or modifications to these Legal Terms from time to time. We will alert you about any changes by updating the "Last updated" date of these Legal Terms, and you waive any right to receive specific notice of each such change. It is your responsibility to periodically review these Legal Terms to stay informed of updates. You will be subject to, and will be deemed to have been made aware of and to have accepted, the changes in any revised Legal Terms by your continued use of the Services after the date such revised Legal Terms are posted.
+The Services are intended for users who are at least 13 years of age. All users who are minors in the jurisdiction in which they reside (generally under the age of 18) must have the permission of, and be directly supervised by, their parent or guardian to use the Services. If you are a minor, you must have your parent or guardian read and agree to these Legal Terms prior to you using the Services.
+We recommend that you print a copy of these Legal Terms for your records</string>
+    <string name="setuju_terms">AGREEMENT TO OUR LEGAL TERMS</string>
+    <string name="welcome_about">Selamat datang di AlergySense - Aplikasi yang Membantu Mengelola Alergi Anda!</string>
+    <string name="PengantarAbout">AlergySense adalah aplikasi yang dirancang khusus untuk membantu Anda mengelola dan memahami alergi Anda dengan lebih baik. Kami percaya bahwa dengan memahami alergi Anda, Anda dapat mengambil langkah-langkah yang tepat untuk menjaga kesehatan Anda dan menghindari pemicu alergi yang mungkin ada di sekitar Anda.</string>
+    <string name="FiturAbbout">Fitur AlergySense:</string>
+    <string name="PenjelasanAbout">AlergySense adalah alat yang berguna bagi mereka yang menderita alergi dan ingin mengambil kontrol atas kondisi mereka. Kami berkomitmen untuk terus meningkatkan aplikasi kami dan menyediakan informasi yang akurat serta bermanfaat bagi pengguna kami.</string>
+</resources>

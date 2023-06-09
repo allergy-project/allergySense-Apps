@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.DetailAllergyActivity"
+    android:background="?attr/bg">
+
+<!--  top  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/top"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/card_top">
+
+<!--    top bar    -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topbar"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/backarrow"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/baseline_arrow_back_24"
+                android:contentDescription="@string/back"/>
+            
+            <TextView
+                android:id="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/backarrow"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/product_sans_bold"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="?attr/boldText"
+                android:text="@string/detail_allergy"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+<!--    image    -->
+        <ImageView
+            android:id="@+id/ivAllergy"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/topbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/image"
+            tools:src="@tools:sample/backgrounds/scenic"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--  content  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/allergy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/product_sans_bold"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="?attr/boldText"
+                    android:text="@string/allergy"/>
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/allergy"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="?attr/boldText"
+                    android:text="@string/date"/>
+
+                <TextView
+                    android:id="@+id/whyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/product_sans_bold"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="?attr/boldText"
+                    android:text="@string/problem"/>
+
+                <TextView
+                    android:id="@+id/whyDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/whyText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:textStyle="normal"
+                    android:textColor="?attr/boldText"
+                    android:textSize="14sp"
+                    android:text="@string/dummy_why_desc"/>
+
+                <TextView
+                    android:id="@+id/howText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/whyDesc"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/product_sans_bold"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="?attr/boldText"
+                    android:text="@string/solution"/>
+
+                <TextView
+                    android:id="@+id/howDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/howText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="?attr/boldText"
+                    android:text="@string/dummy_solution_desc"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="?android:progressBarStyle"
+        android:indeterminate="true"
+        app:indicatorSize="60dp"
+        app:trackThickness="10dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
