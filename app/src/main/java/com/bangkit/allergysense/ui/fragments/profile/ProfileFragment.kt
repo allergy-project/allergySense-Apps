@@ -14,6 +14,8 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.allergysense.databinding.FragmentProfileBinding
 import com.bangkit.allergysense.ui.activities.LoginActivity
+import com.bangkit.allergysense.ui.activities.TermsActivity
+
 import com.bangkit.allergysense.utils.repositories.Response
 import com.bangkit.allergysense.utils.responses.Profile
 import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
@@ -53,6 +55,15 @@ class ProfileFragment : Fragment() {
         modelProfile = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[ProfileViewModel::class.java]
         modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
         modelLogout = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LogoutViewModel::class.java]
+
+        binding.tvPolicy.setOnClickListener {
+
+            Toast.makeText(context, "Hallo Im Underwater", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, TermsActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+
+        }
 
         binding.tvLogout.setOnClickListener {
             modelLogout.logout()

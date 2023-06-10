@@ -14,6 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.bangkit.allergysense.R
 import com.bangkit.allergysense.databinding.ActivityMainBinding
 import com.bangkit.allergysense.ui.fragments.allergy.AllergyFragment
+import com.bangkit.allergysense.ui.fragments.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
             moveToFragment(AllergyFragment())
         } else if (intent.getStringExtra("detailChecl")?.equals("navAllergy") == true) {
             moveToFragment(AllergyFragment())
+        }else if(intent.getStringExtra("checkTerms")?.equals("navAllergy") == true) {
+            moveToFragment(ProfileFragment())
         }
 
         val navView: BottomNavigationView = binding.navView
@@ -38,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navHome, R.id.navAllergy, R.id.navProfile, R.id.navSetting
+                R.id.navHome, R.id.navAllergy, R.id.navProfile, R.id.navSetting,
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

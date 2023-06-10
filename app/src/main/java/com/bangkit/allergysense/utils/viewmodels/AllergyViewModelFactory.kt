@@ -18,6 +18,8 @@ class AllergyViewModelFactory(private val allergyRepository: AllergyRepository):
             return HistoriesViewModel(allergyRepository) as T
         } else if (modelClass.isAssignableFrom(DetailHistoryViewModel::class.java)) {
             return DetailHistoryViewModel(allergyRepository) as T
+        }else if (modelClass.isAssignableFrom(TermsViewModel::class.java)) {
+            return TermsViewModel(allergyRepository) as T
         }
         throw  IllegalArgumentException("Unknown ViewModel")
     }
