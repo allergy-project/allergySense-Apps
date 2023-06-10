@@ -1,7 +1,6 @@
 package com.bangkit.allergysense.ui.activities
 
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -51,16 +50,7 @@ class DetailAllergyActivity : AppCompatActivity() {
         Log.v("id", id.toString())
 
         binding.backarrow.setOnClickListener {
-            if (intent.getStringExtra("result")?.equals("detail") == true) {
-                val intent = Intent(this@DetailAllergyActivity, UploadAllergyActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                val intent = Intent(this@DetailAllergyActivity, MainActivity::class.java)
-                    .putExtra("detailCheck", "navAllergy")
-                startActivity(intent)
-                finish()
-            }
+            finish()
         }
 
         modelUser.user().observe(this@DetailAllergyActivity) {

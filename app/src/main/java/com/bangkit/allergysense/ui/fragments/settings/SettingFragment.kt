@@ -25,8 +25,9 @@ class SettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loading(false)
+
         binding.tvAbout.setOnClickListener {
-             val intent = Intent(activity, AboutActivity::class.java)
+             val intent = Intent(context, AboutActivity::class.java)
              startActivity(intent)
         }
     }

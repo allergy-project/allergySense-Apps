@@ -1,13 +1,11 @@
 package com.bangkit.allergysense.ui.activities
 
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.bangkit.allergysense.R
 import com.bangkit.allergysense.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity() {
@@ -21,14 +19,8 @@ class AboutActivity : AppCompatActivity() {
         loading(false)
         view()
 
-        binding.about.text = getString(R.string.about_apps)
-        binding.welcometoapps.text = getString(R.string.welcome_about)
-        binding.aboutIsian.text = getString(R.string.PengantarAbout)
-        binding.aboutIsian2.text = getString(R.string.PenjelasanAbout)
         binding.backarrow.setOnClickListener {
-            val intent = Intent(this@AboutActivity, MainActivity::class.java)
-            startActivity(intent)
-
+            finish()
         }
     }
     private fun loading(isLoading: Boolean) {

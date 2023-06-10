@@ -57,10 +57,7 @@ class ProfileFragment : Fragment() {
         modelLogout = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LogoutViewModel::class.java]
 
         binding.tvPolicy.setOnClickListener {
-
-            Toast.makeText(context, "Hallo Im Underwater", Toast.LENGTH_SHORT).show()
             val intent = Intent(context, TermsActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
 
         }
