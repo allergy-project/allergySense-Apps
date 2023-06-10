@@ -14,6 +14,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.allergysense.databinding.FragmentAllergyBinding
+import com.bangkit.allergysense.ui.activities.LoginActivity
 import com.bangkit.allergysense.ui.activities.UploadAllergyActivity
 import com.bangkit.allergysense.ui.adapters.ListAdapter
 import com.bangkit.allergysense.utils.repositories.Response
@@ -22,12 +23,14 @@ import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.HistoriesViewModel
 import com.bangkit.allergysense.utils.viewmodels.LoginViewModel
+import com.bangkit.allergysense.utils.viewmodels.LogoutViewModel
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "set")
 class AllergyFragment : Fragment() {
     private var _binding: FragmentAllergyBinding? = null
     private val binding get() = _binding!!
     private lateinit var modelUser: LoginViewModel
+    private lateinit var modelLogout: LogoutViewModel
     private lateinit var modelHistories: HistoriesViewModel
     private lateinit var dataStore: DataStore<Preferences>
 
@@ -60,6 +63,7 @@ class AllergyFragment : Fragment() {
         }
 
         modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
+        modelLogout = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LogoutViewModel::class.java]
         modelHistories = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[HistoriesViewModel::class.java]
 
 
@@ -78,6 +82,12 @@ class AllergyFragment : Fragment() {
                                 }
                                 is Response.Error -> {
                                     loading(false)
+                                    if (data.message.contains("Session Expired, Please Login Again!")) {
+                                        modelLogout.logout()
+                                        val intent = Intent(context, LoginActivity::class.java)
+                                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                        startActivity(intent)
+                                    }
                                     Toast.makeText(context, data.message, Toast.LENGTH_SHORT).show()
                                 }
                             }

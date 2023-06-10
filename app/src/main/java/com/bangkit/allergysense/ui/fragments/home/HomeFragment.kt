@@ -1,6 +1,7 @@
 package com.bangkit.allergysense.ui.fragments.home
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.allergysense.databinding.FragmentHomeBinding
+import com.bangkit.allergysense.ui.activities.LoginActivity
 import com.bangkit.allergysense.ui.adapters.ListAdapter
 import com.bangkit.allergysense.utils.repositories.Response
 import com.bangkit.allergysense.utils.responses.DataItem
@@ -21,6 +23,7 @@ import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.HistoriesViewModel
 import com.bangkit.allergysense.utils.viewmodels.LoginViewModel
+import com.bangkit.allergysense.utils.viewmodels.LogoutViewModel
 import com.bangkit.allergysense.utils.viewmodels.QuotesViewModel
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "set")
@@ -30,6 +33,7 @@ class HomeFragment : Fragment() {
     private lateinit var modelUser: LoginViewModel
     private lateinit var modelQuote: QuotesViewModel
     private lateinit var modelHistories: HistoriesViewModel
+    private lateinit var modelLogout: LogoutViewModel
     private lateinit var dataStore: DataStore<Preferences>
 
     override fun onAttach(context: Context) {
@@ -51,6 +55,7 @@ class HomeFragment : Fragment() {
         loading(false)
 
         modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
+        modelLogout = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LogoutViewModel::class.java]
         modelQuote = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[QuotesViewModel::class.java]
         modelHistories = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[HistoriesViewModel::class.java]
 
@@ -66,6 +71,12 @@ class HomeFragment : Fragment() {
                         }
                         is Response.Error -> {
                             loading(false)
+                            if (result.message.contains("Session Expired, Please Login Again!")) {
+                                modelLogout.logout()
+                                val intent = Intent(context, LoginActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
+                            }
                             Toast.makeText(context, result.message, Toast.LENGTH_SHORT).show()
                         }
                     }

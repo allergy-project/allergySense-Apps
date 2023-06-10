@@ -83,6 +83,12 @@ class ProfileFragment : Fragment() {
                         }
                         is Response.Error -> {
                             loading(false)
+                            if (result.message.contains("Session Expired, Please Login Again!")) {
+                                modelLogout.logout()
+                                val intent = Intent(context, LoginActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
+                            }
                             Toast.makeText(context, result.message, Toast.LENGTH_SHORT).show()
                         }
                     }

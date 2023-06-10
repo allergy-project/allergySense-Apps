@@ -1,6 +1,7 @@
 package com.bangkit.allergysense.ui.activities
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,6 +22,7 @@ import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.DetailHistoryViewModel
 import com.bangkit.allergysense.utils.viewmodels.LoginViewModel
+import com.bangkit.allergysense.utils.viewmodels.LogoutViewModel
 import com.bumptech.glide.Glide
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -34,6 +36,7 @@ class DetailAllergyActivity : AppCompatActivity() {
     private val modelUser get() = _modelUser!!
     private var _modelDetail: DetailHistoryViewModel? = null
     private val modelDetail get() = _modelDetail!!
+    private lateinit var modelLogout: LogoutViewModel
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +47,7 @@ class DetailAllergyActivity : AppCompatActivity() {
         view()
 
         _modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
+        modelLogout = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LogoutViewModel::class.java]
         _modelDetail = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[DetailHistoryViewModel::class.java]
 
         val id = intent.getStringExtra(EXTRA_ID)
@@ -68,6 +72,12 @@ class DetailAllergyActivity : AppCompatActivity() {
 
                             is Response.Error -> {
                                 loading(false)
+                                if (result.message.contains("Session Expired, Please Login Again!")) {
+                                    modelLogout.logout()
+                                    val intent = Intent(this@DetailAllergyActivity, LoginActivity::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                    startActivity(intent)
+                                }
                                 Toast.makeText(this@DetailAllergyActivity, "Failed to load allergy details", Toast.LENGTH_SHORT).show()
                             }
                         }

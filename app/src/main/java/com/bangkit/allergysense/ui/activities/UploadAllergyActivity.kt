@@ -28,6 +28,7 @@ import com.bangkit.allergysense.utils.viewmodels.AllergyViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.AuthViewModelFactory
 import com.bangkit.allergysense.utils.viewmodels.CheckViewModel
 import com.bangkit.allergysense.utils.viewmodels.LoginViewModel
+import com.bangkit.allergysense.utils.viewmodels.LogoutViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -48,6 +49,7 @@ class UploadAllergyActivity : AppCompatActivity() {
     private val modelUser get() = _modelUser!!
     private var _modelUpload: CheckViewModel? = null
     private val modelUpload get() = _modelUpload!!
+    private lateinit var modelLogout: LogoutViewModel
     private var myFile: File? = null
     private var selectedFood: Int? = null
 
@@ -60,6 +62,7 @@ class UploadAllergyActivity : AppCompatActivity() {
         spinner()
 
         _modelUser = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LoginViewModel::class.java]
+        modelLogout = ViewModelProvider(this, AuthViewModelFactory.getInstance(dataStore))[LogoutViewModel::class.java]
         _modelUpload = ViewModelProvider(this, AllergyViewModelFactory.getIntance())[CheckViewModel::class.java]
 
         binding.btnGal.setOnClickListener {
@@ -108,6 +111,12 @@ class UploadAllergyActivity : AppCompatActivity() {
                                             }
                                             is Response.Error -> {
                                                 loading(false)
+                                                if (result.message.contains("Session Expired, Please Login Again!")) {
+                                                    modelLogout.logout()
+                                                    val intent = Intent(this@UploadAllergyActivity, LoginActivity::class.java)
+                                                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                                    startActivity(intent)
+                                                }
                                                 Toast.makeText(this@UploadAllergyActivity, result.message, Toast.LENGTH_SHORT).show()
                                             }
                                         }
